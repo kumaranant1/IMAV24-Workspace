@@ -203,7 +203,7 @@ while True:
 
                     # Filter contours based on area
                     area = cv2.contourArea(contour)
-                    if area > 40000:
+                    if area > 10000:
                         cv2.polylines(frame, [approx], isClosed=True, color=(0, 255, 0), thickness=2)
                         object_width_cm = 19.2  # Width of the rectangle in cm (change according to your object)
                         #distance = estimate_distance_to_object(camera_matrix, distortion_coeffs, approx.astype(np.float32),object_width_cm)
