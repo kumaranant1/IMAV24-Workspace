@@ -1200,15 +1200,33 @@
       <static>1</static>
     </model>
     <state world_name='default'>
-      <sim_time>162 855000000</sim_time>
-      <real_time>165 884382441</real_time>
-      <wall_time>1714501745 231278191</wall_time>
-      <iterations>124747</iterations>
-      <model name='Untitled'>
-        <pose>-2.3162 -2.96335 0 0 -0 0</pose>
+      <sim_time>1166 386000000</sim_time>
+      <real_time>987 776562879</real_time>
+      <wall_time>1719775159 855033291</wall_time>
+      <iterations>910446</iterations>
+      <model name='Untitled_1'>
+        <pose>13.6775 -3.7275 -2.42693 0 -0 0</pose>
         <scale>1 1 1</scale>
-        <link name='Wall_1'>
-          <pose>-2.3162 -5.8517 0 0 -0 0</pose>
+        <link name='Wall_12'>
+          <pose>13.6775 -3.53 -2.42693 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='Wall_13'>
+          <pose>17.9775 -5.455 -2.42693 0 0 -1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='Wall_14'>
+          <pose>13.6775 -7.38 -2.42693 0 -0 3.14159</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='Wall_15'>
+          <pose>9.37754 -5.455 -2.42693 0 -0 1.5708</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -1253,55 +1271,55 @@
         </link>
       </model>
       <model name='iris'>
-        <pose>0.148319 0.059467 -0.025088 0.000584 -0.000306 -0.074968</pose>
+        <pose>11.0988 -3.4756 -0.024965 -0.000131 6.1e-05 0.356512</pose>
         <scale>1 1 1</scale>
         <link name='drone_with_camera::cam_link'>
-          <pose>0.148326 0.059479 -0.045088 0.000584 -0.000306 -0.074968</pose>
-          <velocity>0 -0 0 -0 -0 -0</velocity>
+          <pose>11.0988 -3.4756 -0.044965 -0.000131 6.1e-05 0.356512</pose>
+          <velocity>-0 0 -0 0 -0 0</velocity>
           <acceleration>-0 0 -0 0 -0 0</acceleration>
           <wrench>-0 0 -0 0 -0 0</wrench>
         </link>
         <link name='drone_with_camera::iris::base_link'>
-          <pose>0.148251 0.059358 0.169835 0.000584 -0.000306 -0.074968</pose>
-          <velocity>-0 0 0 -0 -0 -0</velocity>
-          <acceleration>-0 -0 -0 0 -0 0</acceleration>
-          <wrench>-0 -0 -0 0 -0 0</wrench>
+          <pose>11.0988 -3.47557 0.169958 -0.000131 6.1e-05 0.356512</pose>
+          <velocity>0 -0 -0 0 -0 0</velocity>
+          <acceleration>-0 0 0 0 -0 0</acceleration>
+          <wrench>-0 0 0 0 -0 0</wrench>
         </link>
         <link name='drone_with_camera::iris::iris/ground_truth/odometry_sensorgt_link'>
-          <pose>0.148251 0.059358 0.169835 0.000584 -0.000306 -0.074968</pose>
-          <velocity>-0 0 0 -0 -0 -0</velocity>
-          <acceleration>-0 -0 -0 0 -0 0</acceleration>
-          <wrench>-0 -0 -0 0 -0 0</wrench>
+          <pose>11.0988 -3.47557 0.169958 -0.000131 6.1e-05 0.356512</pose>
+          <velocity>0 -0 -0 0 -0 0</velocity>
+          <acceleration>-0 0 0 -0 -0 -8e-06</acceleration>
+          <wrench>-0 0 0 0 -0 0</wrench>
         </link>
         <link name='drone_with_camera::iris::iris/imu_link'>
-          <pose>0.148251 0.059358 0.169835 0.000584 -0.000306 -0.074968</pose>
-          <velocity>-0 0 0 -0 -0 -0</velocity>
-          <acceleration>-0 -0 -0 -0 -0 -0</acceleration>
-          <wrench>-0 -0 -0 0 -0 0</wrench>
+          <pose>11.0988 -3.47557 0.169958 -0.000131 6.1e-05 0.356512</pose>
+          <velocity>0 -0 -0 0 -0 0</velocity>
+          <acceleration>-0 0 0 0 -0 8e-06</acceleration>
+          <wrench>-0 0 0 0 -0 0</wrench>
         </link>
         <link name='drone_with_camera::iris::rotor_0'>
-          <pose>0.2614 -0.169773 0.192746 0.000225 0.000619 -1.77885</pose>
-          <velocity>-0 0 0 -0 -0 -0</velocity>
-          <acceleration>-0 0 0 -0 -0 -0</acceleration>
+          <pose>11.2974 -3.63636 0.192979 -9.2e-05 -0.000111 -0.961008</pose>
+          <velocity>0 -0 -0 0 -0 0</velocity>
+          <acceleration>-0 0 0 0 -0 0</acceleration>
           <wrench>-0 0 0 0 -0 0</wrench>
         </link>
         <link name='drone_with_camera::iris::rotor_1'>
-          <pose>0.033587 0.26852 0.192912 0.000385 0.000535 -1.50359</pose>
-          <velocity>-0 0 -0 -0 -0 -0</velocity>
-          <acceleration>-0 -0 0 0 -0 0</acceleration>
-          <wrench>-0 -0 0 0 -0 0</wrench>
+          <pose>10.9072 -3.33351 0.19294 -0.000121 -7.9e-05 -0.654562</pose>
+          <velocity>0 -0 0 0 -0 0</velocity>
+          <acceleration>0 0 -0 0 -0 0</acceleration>
+          <wrench>0 0 -0 0 -0 0</wrench>
         </link>
         <link name='drone_with_camera::iris::rotor_2'>
-          <pose>0.294355 0.268991 0.193003 0.000562 -0.000344 -0.007888</pose>
-          <velocity>-0 0 -0 -0 -0 -0</velocity>
-          <acceleration>-0 -0 0 0 -0 0</acceleration>
-          <wrench>-0 -0 0 0 -0 0</wrench>
+          <pose>11.1439 -3.22403 0.192921 -0.000124 -7.5e-05 -0.623903</pose>
+          <velocity>0 -0 0 0 -0 0</velocity>
+          <acceleration>-0 0 -0 0 -0 0</acceleration>
+          <wrench>-0 0 -0 0 -0 0</wrench>
         </link>
         <link name='drone_with_camera::iris::rotor_3'>
-          <pose>0.003628 -0.130356 0.192678 0.000507 0.000421 -1.24948</pose>
-          <velocity>-0 0 0 -0 -0 -0</velocity>
-          <acceleration>-0 -0 -0 0 -0 0</acceleration>
-          <wrench>-0 -0 -0 0 -0 0</wrench>
+          <pose>11.0468 -3.70836 0.192992 -0.000144 -1e-05 -0.151621</pose>
+          <velocity>0 -0 -0 0 -0 0</velocity>
+          <acceleration>-0 0 -0 0 -0 0</acceleration>
+          <wrench>-0 0 -0 0 -0 0</wrench>
         </link>
       </model>
       <light name='sun'>
@@ -1310,18 +1328,18 @@
     </state>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose>14.8857 -12.1055 4.57182 0 0.275643 2.35619</pose>
+        <pose>11.5887 2.26598 8.40757 0 0.979643 -2.0838</pose>
         <view_controller>orbit</view_controller>
         <projection_type>perspective</projection_type>
       </camera>
     </gui>
-    <model name='Untitled'>
-      <pose>-2.3162 -2.96335 0 0 -0 0</pose>
-      <link name='Wall_1'>
-        <collision name='Wall_1_Collision'>
+    <model name='Untitled_1'>
+      <pose>-2.3 -3.7275 0 0 -0 0</pose>
+      <link name='Wall_12'>
+        <collision name='Wall_12_Collision'>
           <geometry>
             <box>
-              <size>28 0.15 2.5</size>
+              <size>8.75 0.15 2.5</size>
             </box>
           </geometry>
           <pose>0 0 1.25 0 -0 0</pose>
@@ -1339,11 +1357,11 @@
             </friction>
           </surface>
         </collision>
-        <visual name='Wall_1_Visual'>
+        <visual name='Wall_12_Visual'>
           <pose>0 0 1.25 0 -0 0</pose>
           <geometry>
             <box>
-              <size>28 0.15 2.5</size>
+              <size>8.75 0.15 2.5</size>
             </box>
           </geometry>
           <material>
@@ -1357,7 +1375,142 @@
             <layer>0</layer>
           </meta>
         </visual>
-        <pose>0 -2.88835 0 0 -0 0</pose>
+        <pose>0 0.1975 0 0 -0 0</pose>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='Wall_13'>
+        <collision name='Wall_13_Collision'>
+          <geometry>
+            <box>
+              <size>4 0.15 2.5</size>
+            </box>
+          </geometry>
+          <pose>0 0 1.25 0 -0 0</pose>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='Wall_13_Visual'>
+          <pose>0 0 1.25 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>4 0.15 2.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+            <ambient>0 0 1 1</ambient>
+          </material>
+          <meta>
+            <layer>0</layer>
+          </meta>
+        </visual>
+        <pose>4.3 -1.7275 0 0 -0 -1.5708</pose>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='Wall_14'>
+        <collision name='Wall_14_Collision'>
+          <geometry>
+            <box>
+              <size>8.75 0.15 2.5</size>
+            </box>
+          </geometry>
+          <pose>0 0 1.25 0 -0 0</pose>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='Wall_14_Visual'>
+          <pose>0 0 1.25 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>8.75 0.15 2.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+            <ambient>0 0 1 1</ambient>
+          </material>
+          <meta>
+            <layer>0</layer>
+          </meta>
+        </visual>
+        <pose>0 -3.6525 0 0 -0 3.14159</pose>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='Wall_15'>
+        <collision name='Wall_15_Collision'>
+          <geometry>
+            <box>
+              <size>4 0.15 2.5</size>
+            </box>
+          </geometry>
+          <pose>0 0 1.25 0 -0 0</pose>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='Wall_15_Visual'>
+          <pose>0 0 1.25 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>4 0.15 2.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+            <ambient>0 0 1 1</ambient>
+          </material>
+          <meta>
+            <layer>0</layer>
+          </meta>
+        </visual>
+        <pose>-4.3 -1.7275 0 0 -0 1.5708</pose>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>

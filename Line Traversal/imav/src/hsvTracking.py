@@ -16,6 +16,9 @@ from mavros_msgs.srv import CommandBool, CommandBoolRequest
 from mavros_msgs.srv import SetMode, SetModeRequest
 from tf.transformations import euler_from_quaternion
 
+
+# The following code does not utilizes PID for velocity control, it's experimental and may not work
+# due to some missing or manipulated code scripts that are done by us only for purpose of experiment
 ################################################################################################################################################
 # define global variables
 
@@ -24,20 +27,27 @@ CENTRE_TOP = 100
 CENTRE_BOTTOM = 380
 CENTRE_LEFT = 165
 CENTRE_RIGHT = 315
-VERT_VEL = 1
-HORI_VEL = 0.25
+
+BOTTOM_CENTRE = np.array([480, 320])
+VERT_VEL = 1 # tunable
+YAW_VEL = 0.1 # tunable
+HORI_VEL = 0.25 # tunable
 GREEN = (0, 255, 0)
 RED = (0, 0, 255)
 LOWER_BOUND = 350
 minThreshold = 100
 boundaryPoints = []
+bottomPoints = []
+EPSILON = 1e-8
 for i in range(640):
     boundaryPoints.append([LOWER_BOUND, i])
+    bottomPoints.append([LOWER_BOUND, i])
     boundaryPoints.append([0, i])
 for i in range(480):
     boundaryPoints.append([i, 0])
     boundaryPoints.append([i, 640])
 boundaryPoints = np.array(boundaryPoints)
+bottomPoints = np.array(bottomPoints)
 
 previousPos = TwistStamped()
 previousPos.twist.linear.x = 0
@@ -47,7 +57,7 @@ centre = (-1, -1)
 ################################################################################################################################################
 
 # Function for Line tracking 
-def lineTraversal(img):
+def lineTraversal(img : np.ndarray)->tuple:
     '''
     This function is used to find the 
     '''
@@ -93,7 +103,7 @@ def lineTraversal(img):
 ################################################################################################################################################
 
 # the following code & showImage() is for HSV Tracking it will open tracker bars to set correct value for colors we want to track
-def nothing(x):
+def nothing(x)->None:
     pass
 # cv2.namedWindow("Trackbars", 1)
 # cv2.createTrackbar("Hue Lower", "Trackbars", 0, 179, nothing)
@@ -102,17 +112,16 @@ def nothing(x):
 # cv2.createTrackbar("Saturation Upper", "Trackbars", 255, 255, nothing)
 # cv2.createTrackbar("Value Lower", "Trackbars", 0, 255, nothing)
 # cv2.createTrackbar("Value Upper", "Trackbars", 255, 255, nothing)
-def showImage(img):
+def showImage(img)->None:
     frame = img
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-
     hue_low = cv2.getTrackbarPos("Hue Lower", "Trackbars")
     hue_high = cv2.getTrackbarPos("Hue Upper", "Trackbars")
     sat_low = cv2.getTrackbarPos("Saturation Lower", "Trackbars")
     sat_high = cv2.getTrackbarPos("Saturation Upper", "Trackbars")
     val_low = cv2.getTrackbarPos("Value Lower", "Trackbars")
     val_high = cv2.getTrackbarPos("Value Upper", "Trackbars")
-
+#or theta < -0.3:
     # Define the HSV range based on trackbar positions
     lower_range = np.array([hue_low, sat_low, val_low])
     upper_range = np.array([hue_high, sat_high, val_high])
@@ -125,10 +134,10 @@ def showImage(img):
     cv2.imshow("Result", result)
     cv2.waitKey(3)
     
-################################################################################################################################################
+#######################################################0.0043667#########################################################################################
 
 # Image function for processing the images
-def image_callback(msg):
+def image_callback(msg : Image)->np.ndarray:
     try:
         # Convert ROS Image message to OpenCV format
         bridge = CvBridge()
@@ -164,22 +173,21 @@ def cmd_vel(vel_linx , vel_liny, vel_linz, vel_angx, vel_angy, vel_angz):
 ################################################################################################################################################
 
 # Callback funcion for getting pose of Drone
-def orientation_callback(msg):
+def orientation_callback(msg : Pose)->None:
     global current_yaw
     orientation_q = msg.pose.orientation
     orientation_list = [orientation_q.x, orientation_q.y, orientation_q.z, orientation_q.w]
     (roll, pitch, current_yaw) = euler_from_quaternion(orientation_list)
-    print(current_yaw)
 
 ################################################################################################################################################
 
-def inBox(point):
+def inBox(point : tuple)->bool:
     if (point[0]<=CENTRE_RIGHT and point[0]>=CENTRE_LEFT and point[1]>=CENTRE_TOP and point[1]<=CENTRE_BOTTOM):
         return True
 
 ################################################################################################################################################
 
-def retVel(point):
+def retVel(point : float)->(float, float):
     global previousPos
     currentPos.twist.linear.x = point[0]
     currentPos.twist.linear.y = point[1]
@@ -201,6 +209,22 @@ def retVel(point):
     previousPos = currentPos
     return horVel, vertVel
 
+###############################################################################################################################################
+# Yaw angular velocity
+# we are taking bottom absolute centre 
+def retYaw(centre : tuple)->float:
+    if(centre == (-1, -1)):
+        return 0
+    else:
+        difference = np.array(centre)-BOTTOM_CENTRE
+        theta = np.arctan(difference[1]/(difference[0]+EPSILON))
+        if theta > 0.3:
+            return YAW_VEL
+        elif theta < -0.3:
+            return -YAW_VEL
+        return 0 
+
+
 def main():
     # Initialize the ROS node
     rospy.init_node('line_traversal_node', anonymous=True)
@@ -216,13 +240,13 @@ def main():
     # Set the rate at which to publish messages
     rate = rospy.Rate(30)  # 30Hz
     
-    
     # Main loop
     while not rospy.is_shutdown():
         # create the TwistStamped msg
         horVel, verVel = retVel(centre)
-        print(centre)
-        vel_msg = cmd_vel(verVel, horVel, 0, 0, 0, 0) # here set the required velocities to track
+        yaw = retYaw(centre)
+        # print(centre)
+        vel_msg = cmd_vel(verVel, horVel, 0, 0, 0, yaw) # here set the required velocities to track
         # Publish the TwistStamped message
         pub.publish(vel_msg)
         # Process any other tasks here
