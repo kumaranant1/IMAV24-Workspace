@@ -45,7 +45,7 @@ class Image_converter(object):
 
 
 
-    # The following function is redefined for child class lin
+    # The following function is redefined for child class <LineFollower>
     def line_detect(self, cv_image):
         # Create a mask
         # cv_image_hsv = cv2.cvtColor(cv_image, cv2.COLOR_BGR2HSV)
