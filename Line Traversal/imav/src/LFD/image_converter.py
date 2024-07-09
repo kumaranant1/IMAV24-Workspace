@@ -44,17 +44,6 @@ class Image_converter(object):
         self.velocity = 0.06
 
 
-    # Get the battery percentage
-    # def battery(self, data):
-    #     self.battery = data.percent
-
-
-    # Tilt down the camera in 90 degrees
-    # def cam_down(self):
-    #     cam = Twist()
-    #     cam.angular.y = -90.0
-    #     self.pub_camdown.publish(cam)
-
 
     # The following function is redefined for child class lin
     def line_detect(self, cv_image):
